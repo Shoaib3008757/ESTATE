@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">PK ESTATE</string>
+    <string name="tv_submit_propterty">SUBMIT YOUR PROPERTY</string>
+    <string name="tv_pk_estate">PK ESTATE</string>
+    <string name="tv_about_us">About Us</string>
+
+
+    <array name="test_list">
+        <item>First 1</item>
+        <item>First 2</item>
+        <item>First 3</item>
+        <item>First 4</item>
+        <item>First 5</item>
+        <item>First 6</item>
+    </array>
+
+    <array name="chose_a_city">
+        <item>Chose a City</item>
+        <item>Lahore</item>
+        <item>Islamabad</item>
+        <item>Karachi</item>
+        <item>Peshawar</item>
+        <item>Multan</item>
+    </array>
+
+    <array name="property_type">
+        <item>Property Type</item>
+        <item>Apartment</item>
+        <item>House</item>
+        <item>Office</item>
+        <item>Villa</item>
+        <item>Resort</item>
+    </array>
+
+
+    <array name="property_status">
+        <item>Property Status</item>
+        <item>For Rent</item>
+        <item>For Sale</item>
+    </array>
+
+    <array name="property_bedrooms">
+        <item>Bedrooms</item>
+        <item>1 Bedrooms</item>
+        <item>2 Bedrooms</item>
+        <item>3 Bedrooms</item>
+    </array>
+
+    <array name="property_bathrooms">
+        <item>Bathrooms</item>
+        <item>1 Bathrooms</item>
+        <item>2 Bathrooms</item>
+        <item>3 Bathrooms</item>
+    </array>
+
+
+    <array name="min_price">
+        <item>Min Price</item>
+        <item>15,000$</item>
+        <item>15,000$</item>
+        <item>17,000$</item>
+    </array>
+
+    <array name="max_price">
+        <item>Max Price</item>
+        <item>20,000$</item>
+        <item>25,000$</item>
+        <item>30,000$</item>
+    </array>
+
+
+    <array name="property_for">
+        <item>Property For</item>
+        <item>For Rent</item>
+        <item>For Sale</item>
+    </array>
+
+
+    <array name="property_type_submit">
+        <item>Property Type</item>
+        <item>House</item>
+        <item>Flat</item>
+        <item>Land</item>
+        <item>Plot</item>
+        <item>Commercial</item>
+        <item>Shop</item>
+    </array>
+
+    <array name="land_area">
+        <item>Land Area</item>
+        <item>Marla</item>
+        <item>Kanal</item>
+
+    </array>
+
+
+    <array name="property_avail">
+        <item>Property Avail</item>
+        <item>Available</item>
+        <item>Sold</item>
+
+    </array>
+
+
+
+
+
+</resources>
