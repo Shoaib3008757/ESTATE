@@ -185,7 +185,7 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
                 navUsername.setTitle(name);
                 navUsername.setIcon(R.drawable.home_image_view);
                 navLoginRegister.setTitle("Log Out");
-                navChosePlane.setTitle("Chose Plane");
+                navChosePlane.setTitle("Choose Plan");
                 navChosePlane.setIcon(R.drawable.home_image_view);
             }
         }

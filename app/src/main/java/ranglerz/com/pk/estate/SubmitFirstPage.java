@@ -35,13 +35,15 @@ public class SubmitFirstPage extends Fragment {
         ed_ofBathrooms = (EditText) view.findViewById(R.id.ed_no_of_bathrooms);
         ed_floors = (EditText) view.findViewById(R.id.ed_no_of_floors);
         ed_description = (EditText) view.findViewById(R.id.et_description);
-        ed_structureOfProperty = (EditText) view.findViewById(R.id.ed_structure_of_property);
+        /*ed_structureOfProperty = (EditText) view.findViewById(R.id.ed_structure_of_property);
         ed_flooringStructer = (EditText) view.findViewById(R.id.ed_flooring_structure);
         ed_wallsStructure = (EditText) view.findViewById(R.id.ed_walls_structure);
         ed_doorsStructure = (EditText) view.findViewById(R.id.ed_doors_structure);
         ed_windowsStructure = (EditText) view.findViewById(R.id.ed_windows_structure);
         ed_electricalStructure = (EditText) view.findViewById(R.id.ed_electrical_structure);
+        */
         ed_landAread = (EditText) view.findViewById(R.id.ed_land_area);
+
 
         sp_propertyType = (Spinner) view.findViewById(R.id.sp_property_type);
         sp_propertyFor = (Spinner) view.findViewById(R.id.sp_property_for);
@@ -49,11 +51,12 @@ public class SubmitFirstPage extends Fragment {
         sp_propertyAvail = (Spinner) view.findViewById(R.id.sp_property_avail);
 
         ll_propertyInerNumber = (LinearLayout) view.findViewById(R.id.ll_propertyInerNumber);
-        ll_property_flooring = (LinearLayout)  view.findViewById(R.id.property_flooring);
+
+        /*ll_property_flooring = (LinearLayout)  view.findViewById(R.id.property_flooring);
         ll_walls_door = (LinearLayout)  view.findViewById(R.id.walls_doors);
         ll_windwos_electrical = (LinearLayout)  view.findViewById(R.id.ll_window_electrical);
 
-
+*/
         checkingPropertytype();
 
 
@@ -98,6 +101,7 @@ public class SubmitFirstPage extends Fragment {
 
             }
         });
+        /*
         ed_structureOfProperty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +172,7 @@ public class SubmitFirstPage extends Fragment {
 
             }
         });
-
+*/
 
         sp_propertyFor.getSelectedItem().toString();
 
@@ -194,9 +198,9 @@ public class SubmitFirstPage extends Fragment {
 
                     ll_propertyInerNumber.setVisibility(View.GONE);
 
-                    ll_property_flooring.setVisibility(View.GONE);
+                  /*  ll_property_flooring.setVisibility(View.GONE);
                     ll_walls_door.setVisibility(View.GONE);
-                    ll_windwos_electrical.setVisibility(View.GONE);
+                    ll_windwos_electrical.setVisibility(View.GONE);*/
 
                 }
 
@@ -206,9 +210,11 @@ public class SubmitFirstPage extends Fragment {
                         || sp_propertyType.getSelectedItem().equals("Shop")){
 
                     ll_propertyInerNumber.setVisibility(View.VISIBLE);
-                    ll_property_flooring.setVisibility(View.VISIBLE);
+
+
+                    /*ll_property_flooring.setVisibility(View.VISIBLE);
                     ll_walls_door.setVisibility(View.VISIBLE);
-                    ll_windwos_electrical.setVisibility(View.VISIBLE);
+                    ll_windwos_electrical.setVisibility(View.VISIBLE);*/
                 }
             }
 

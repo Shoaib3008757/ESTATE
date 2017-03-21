@@ -60,7 +60,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
     int idx = -1;
 
-    private final String serverUrlLogin = "http://pk.estate/app_webservices/login.php";
+    private final String serverUrlPayments = "http://pk.estate/app_webservices/payments.php";
 
 
     static final String TAG = "CHOSE PLAIN";
@@ -111,7 +111,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
     public void init(){
 
 
-        radioGroup = (RadioGroup) findViewById(R.id.radio_group_chose_plain);
+        radioGroup = (RadioGroup) findViewById(R.id.radio_group_chose_plan);
         prcceedButton = (Button) findViewById(R.id.bt_proceed);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(ChosePlain.this ,R.color.colorSkyBlue)));
@@ -135,7 +135,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
                 Log.e("TAGE", "SELECTED RADIO ID: " + idx);
 
                 if (idx==-1){
-                    Toast.makeText(ChosePlain.this, "Please Choase A Plain First ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChosePlain.this, "Please Choose A Plan First ", Toast.LENGTH_SHORT).show();
                 }else {
 
 
@@ -164,6 +164,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
                             if (idx==0) {
 
                                 buyPlane1();
+
                             }
 
                             if (idx==1) {
@@ -244,6 +245,8 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
 
                             procceedDialog.dismiss();
+
+
 
                         }
                     });
@@ -1067,8 +1070,9 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
                 //saveData();
                 alert("You have successfully bought Laptop");
 
-               // onSuccessLaptopBought();
-               // DialogForCustomerInfo();
+
+                onSuccessfullBoughtPropertyPlane();
+
 
 
 
@@ -1688,16 +1692,13 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
             super.onPostExecute(result);
 
 
-
-
             Log.e("TAG", "Resulted Value: " + result);
 
-            if(result.equals("") || result == null){
+            if (result.equals("") || result == null) {
 
                 Toast.makeText(ChosePlain.this, "Server connection failed", Toast.LENGTH_LONG).show();
 
                 bar.setVisibility(View.GONE);
-
 
 
                 return;
@@ -1707,35 +1708,18 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
             String jsonResult = returnParsedJsonObject(result);
 
             Log.e("TAG", "RESULT " + result);
+            Log.e("TAG", "RESULT 1 " + jsonResult);
+
+
+
+            bar.setVisibility(View.GONE);
 
 
 
 
 
-                if (result!=null) {
 
-                    if (jsonResult.equals("already registered")) {
-
-                        Toast.makeText(ChosePlain.this, "User Already Registered", Toast.LENGTH_LONG).show();
-                        bar.setVisibility(View.GONE);
-
-
-                        return;
-
-                    }
-
-                    if (jsonResult.equals("registered successfully")) {
-
-                        Toast.makeText(ChosePlain.this, "Register Successfully", Toast.LENGTH_LONG).show();
-                        bar.setVisibility(View.GONE);
-
-
-
-                    }
-
-
-
-            }
+        }
 
 
 
@@ -1767,7 +1751,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
             return answer;
 
-        }
+
 
     }//end of async class
 
@@ -1780,10 +1764,17 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
         try {
 
             resultObject = new JSONObject(result);
+            Log.e("TAG", "RESULT Object " + resultObject);
+            String balance = resultObject.getString("balance");
+
+
+            Log.e("TAG", "RESULT Value " + balance);
+
+            //showing current balnace in dialog
+            currentBalaceDialog(balance);
 
 
 
-                resultObject = new JSONObject(result);
 
 
 
@@ -1821,7 +1812,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
 
@@ -1832,7 +1823,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
 
@@ -1843,7 +1834,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==3){
@@ -1853,7 +1844,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==4){
@@ -1863,7 +1854,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }if (idx==5){
 
@@ -1872,7 +1863,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==6){
@@ -1882,7 +1873,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==7){
@@ -1892,7 +1883,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }if (idx==8){
 
@@ -1901,7 +1892,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==9){
@@ -1911,7 +1902,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==10){
@@ -1921,7 +1912,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==11){
@@ -1931,7 +1922,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==12){
@@ -1941,7 +1932,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==13){
@@ -1951,7 +1942,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==14){
@@ -1961,7 +1952,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
                 if (idx==15){
@@ -1971,7 +1962,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, email, payment);
+                    asyncRequestObject.execute(serverUrlPayments, email, payment);
 
                 }
 
@@ -1988,6 +1979,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
         final Dialog currentBalanceDilaog = new Dialog(ChosePlain.this);
         currentBalanceDilaog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        currentBalanceDilaog.setContentView(R.layout.dialog_for_current_balance);
 
         TextView tv_currentBalance = (TextView)currentBalanceDilaog.findViewById(R.id.tv_dilaog_current_balance);
         Button bt_ok = (Button) currentBalanceDilaog.findViewById(R.id.dialog_bt_ok);
@@ -1997,9 +1989,16 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
         bt_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 currentBalanceDilaog.dismiss();
+
+
             }
         });
+
+        currentBalanceDilaog.show();
 
 
     }//end of currentBalance Dialog

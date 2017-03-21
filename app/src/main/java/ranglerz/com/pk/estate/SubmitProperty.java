@@ -666,13 +666,15 @@ public class SubmitProperty extends AppCompatActivity {
                 bathrooms = f.ed_ofBathrooms.getText().toString();
                 floors = f.ed_floors.getText().toString();
                 description = f.ed_description.getText().toString();
+
+         /*
                 property_structure = f.ed_structureOfProperty.getText().toString();
                 floor_structure = f.ed_flooringStructer.getText().toString();
                 walls_structure = f.ed_wallsStructure.getText().toString();
                 doors_structure = f.ed_doorsStructure.getText().toString();
                 windows_structure = f.ed_windowsStructure.getText().toString();
                 electrical_structure = f.ed_electricalStructure.getText().toString();
-
+*/
                 Log.e("TAG", "TEST TEST " + timestamp1);
 
 
@@ -697,10 +699,6 @@ public class SubmitProperty extends AppCompatActivity {
                     Toast.makeText(SubmitProperty.this, "Please enter required fields", Toast.LENGTH_SHORT).show();
                 }
 
-                else if (encodedImage1==null || encodedImage2==null){
-                    Toast.makeText(SubmitProperty.this, "Please Chose at Lest Two Images.", Toast.LENGTH_SHORT).show();
-                    viewPager.setCurrentItem(viewPager.getCurrentItem() - 1, true);
-                }
 
                 else {
 
@@ -824,7 +822,7 @@ public class SubmitProperty extends AppCompatActivity {
                 title = f.ed_protpertyTitle.getText().toString();
                 price = f.ed_propertyPrice.getText().toString();
                 description = f.ed_description.getText().toString();
-                if (title.isEmpty() || price.isEmpty() || description.isEmpty()){
+                if (title.isEmpty() || price.isEmpty()){
                     Toast.makeText(SubmitProperty.this, "Fields with a red star should not be empty.", Toast.LENGTH_SHORT).show();
                 }else {
                     jumpToNext(v);

@@ -1,5 +1,6 @@
 package ranglerz.com.pk.estate;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -51,7 +53,7 @@ public class LoginOrRegister extends AppCompatActivity {
 
     LinearLayout ll_register_email, ll_register_name, ll_register_pass, ll_register_phone, ll_already_have_an_account;
     RelativeLayout rl_register_title_text;
-    TextView tv_already_have_account;
+    TextView tv_already_have_account, tv_forget_password;
     Button bt_create_account;
 
     private final String serverUrlLogin = "http://pk.estate/app_webservices/login.php";
@@ -59,6 +61,9 @@ public class LoginOrRegister extends AppCompatActivity {
 
 
     int loginRegister = 0;
+
+
+    String name = null;
 
     SharedPreferences sharedPreferences;
     private ProgressBar bar;
@@ -74,6 +79,7 @@ public class LoginOrRegister extends AppCompatActivity {
         visibleRegisterViews();
         btLoginHandler();
         btCreateAccountHandler();
+        forgoetPasswordHandler();
     }
 
     public void init(){
@@ -97,6 +103,7 @@ public class LoginOrRegister extends AppCompatActivity {
         ll_dont_have_an_account = (LinearLayout) findViewById(R.id.ll_tv_dont_have_account);
         rl_login_title_text = (RelativeLayout) findViewById(R.id.rl_login_title_text);
         tv_dont_have_accont = (TextView) findViewById(R.id.tv_dont_have_account);
+        tv_forget_password = (TextView) findViewById(R.id.tv_forgot_password);
         bt_login_now = (Button) findViewById(R.id.bt_login_now);
 
         //registring views for registeration
@@ -318,12 +325,14 @@ public class LoginOrRegister extends AppCompatActivity {
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 
 
+                //for login user
                 if (loginRegister==1) {
                     nameValuePairs.add(new BasicNameValuePair("email", params[1]));
 
                     nameValuePairs.add(new BasicNameValuePair("password", params[2]));
 
                 }
+                //for registring user
                 if (loginRegister==2){
 
                     nameValuePairs.add(new BasicNameValuePair("name", params[1]));
@@ -333,6 +342,12 @@ public class LoginOrRegister extends AppCompatActivity {
                     nameValuePairs.add(new BasicNameValuePair("phone", params[3]));
 
                     nameValuePairs.add(new BasicNameValuePair("password", params[4]));
+                }
+
+                //for forget password
+                if (loginRegister==3){
+
+                    nameValuePairs.add(new BasicNameValuePair("email", params[1]));
                 }
 
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -393,21 +408,31 @@ public class LoginOrRegister extends AppCompatActivity {
 
             String jsonResult = returnParsedJsonObject(result);
 
-            Log.e("TAG", "RESULT " + result);
+            Log.e("TAG", "RESULT 123" + result);
+            Log.e("TAG", "RESULT 123" + jsonResult);
 
 
             if (loginRegister==1){
 
                 if (result!=null){
-                    Toast.makeText(LoginOrRegister.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                    bar.setVisibility(View.GONE);
 
 
 
-                    Intent submitProperty = new Intent(LoginOrRegister.this, SubmitProperty.class);
-                    startActivity(submitProperty);
-                    finish();
+                    if (name==null){
+                        Toast.makeText(LoginOrRegister.this, "Invalid Password or Email", Toast.LENGTH_LONG).show();
+                        bar.setVisibility(View.GONE);
+                        tv_forget_password.setVisibility(View.VISIBLE);
+                    }
+                    else {
 
+                        Toast.makeText(LoginOrRegister.this, "Login Successfully ", Toast.LENGTH_LONG).show();
+                        bar.setVisibility(View.GONE);
+
+                        Intent submitProperty = new Intent(LoginOrRegister.this, SubmitProperty.class);
+                        startActivity(submitProperty);
+                        finish();
+
+                    }
                 }
             }
 
@@ -490,32 +515,34 @@ public class LoginOrRegister extends AppCompatActivity {
 
             resultObject = new JSONObject(result);
 
+            boolean flag = true;
+
 
 
             if (loginRegister==1) {
 
                 resultObject = new JSONObject(result);
 
-                String name = resultObject.getString("name");
-                String email = resultObject.getString("email");
-                String phone = resultObject.getString("number");
-                String password = resultObject.getString("number");
-
-                SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name", name);
-                editor.putString("email", email);
-                editor.putString("phone", phone);
-                editor.clear();
-                editor.commit();
 
 
+                    name = resultObject.getString("name");
+                    String email = resultObject.getString("email");
+                    String phone = resultObject.getString("number");
+                    String password = resultObject.getString("password");
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("name", name);
+                    editor.putString("email", email);
+                    editor.putString("phone", phone);
+                    editor.clear();
+                    editor.commit();
 
 
-                Log.e("TAG", "RESULT 111 " + email);
-                Log.e("TAG", "RESULT 111 " + name);
-                Log.e("TAG", "RESULT 111 " + phone);
-                Log.e("TAG", "RESULT 111 " + password);
+                    Log.e("TAG", "RESULT 111 " + email);
+                    Log.e("TAG", "RESULT 111 " + name);
+                    Log.e("TAG", "RESULT 111 " + phone);
+                    Log.e("TAG", "RESULT 111 " + password);
 
 
             }
@@ -555,6 +582,56 @@ public class LoginOrRegister extends AppCompatActivity {
         rl_login_title_text.setVisibility(View.VISIBLE);
         tv_dont_have_accont.setVisibility(View.VISIBLE);
         bt_login_now.setVisibility(View.VISIBLE);
+    }
+
+
+    public void forgoetPasswordHandler(){
+        tv_forget_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //careating dialog for forgot password
+
+                final Dialog forGetPassword = new Dialog(LoginOrRegister.this);
+                forGetPassword.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                forGetPassword.setContentView(R.layout.dialog_forgot_password);
+
+                final EditText etEmail = (EditText) forGetPassword.findViewById(R.id.dialo_email_forgot_password);
+                Button btOk = (Button) forGetPassword.findViewById(R.id.dialog_forgetpassword_bt_ok);
+
+                btOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String dialogEmail = etEmail.getText().toString();
+                        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                        if (dialogEmail.isEmpty()){
+
+                            Toast.makeText(LoginOrRegister.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (!dialogEmail.matches(emailPattern)){
+
+                            Toast.makeText(LoginOrRegister.this, "Please Enter Valid Email", Toast.LENGTH_SHORT).show();
+
+                        }else {
+
+                            Log.e("TAG", " Email  " + dialogEmail);
+                            forGetPassword.dismiss();
+
+                            loginRegister = 3;
+
+                            AsyncDataClass asyncRequestObject = new AsyncDataClass();
+
+                            //asyncRequestObject.execute(serverUrlRegistration, dialogEmail);
+                        }
+
+
+                    }
+                });
+
+                forGetPassword.show();
+            }
+        });
     }
 
 

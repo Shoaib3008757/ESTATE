@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_chose_plain"
+    android:id="@+id/activity_chose_plan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ranglerz.com.pk.estate.ChosePlain"
@@ -23,13 +23,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:id="@+id/radio_group_chose_plain">
+                    android:id="@+id/radio_group_chose_plan">
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 25$"
+            android:text="Chose plan Of 25$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 49$"
+            android:text="Chose Plan Of 49$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 75$"
+            android:text="Chose plan Of 75$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -60,18 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 105$"
-            android:textColor="@color/colorWhite"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
-
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Chose Plain Of 145$"
+            android:text="Chose plan Of 105$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -82,7 +71,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 189$"
+            android:text="Chose plan Of 145$"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Chose plan Of 189$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 195$"
+            android:text="Chose plan Of 195$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 209$"
+            android:text="Chose plan Of 209$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 225$"
+            android:text="Chose plan Of 225$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 249$"
+            android:text="Chose plan Of 249$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -132,7 +132,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 299$"
+            android:text="Chose plan Of 299$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -142,31 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 315$"
-            android:textColor="@color/colorWhite"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
-
-
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/colorWhite"
-            android:text="Chose Plain Of 325$"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"/>
-
-
-
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Chose Plain Of 349$"
+            android:text="Chose plan Of 315$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -178,7 +154,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 385$"
+            android:textColor="@color/colorWhite"
+            android:text="Chose plan Of 325$"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Chose plan Of 349$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
@@ -190,7 +178,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Chose Plain Of 399$"
+            android:text="Chose plan Of 385$"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Chose plan Of 399$"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"

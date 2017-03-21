@@ -147,10 +147,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_dont_have_account"
-                    android:text="Dont Have an Account Click to register now"
+                    android:text="Sign Up Now"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="6dp"
                     android:textColor="@color/colorRed"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_forgot_password"
+                    android:text="Forget Password"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/tv_dont_have_account"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorRed"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -290,7 +304,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_already_have_account"
-                    android:text="Already Have an Account Click to Login now"
+                    android:text="Already Have An Account! Login now"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="6dp"
                     android:textColor="@color/colorRed"/>
