@@ -100,7 +100,7 @@ public class SubmitProperty extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 000001;
 
 
-    public static final String SERVERURL = "http://pk.estate/app_webservices/add_property.php";
+    public static final String SERVERURL = "http://www.pk.estate/app_webservices/add_property.php";
 
 
 
@@ -688,7 +688,7 @@ public class SubmitProperty extends AppCompatActivity {
 
 
 
-                if (title.isEmpty() || price.isEmpty() || description.isEmpty()){
+                if (title.isEmpty() || price.isEmpty()){
                     Toast.makeText(SubmitProperty.this, "Fields with a red star should not be empty.", Toast.LENGTH_SHORT).show();
                     viewPager.setCurrentItem(viewPager.getCurrentItem() - 2, true);
 
@@ -730,7 +730,10 @@ public class SubmitProperty extends AppCompatActivity {
 
 
 
-                   new LoadingToServer().execute();
+                    new LoadingToServer().execute();
+
+                    Log.e("TAG", "Image 1 " + encodedImage1);
+                    Log.e("TAG", "TimeStamp 1 " + encodedImage1);
 
 
                 }
@@ -869,7 +872,7 @@ public class SubmitProperty extends AppCompatActivity {
             HttpURLConnection connection = null;
             try {
 
-                URL url = new URL("http://pk.estate/app_webservices/add_property.php");
+                URL url = new URL("http://www.pk.estate/app_webservices/add_property.php");
 
 
                 connection = (HttpURLConnection) url.openConnection();
@@ -914,6 +917,10 @@ public class SubmitProperty extends AppCompatActivity {
                         .appendQueryParameter("timestamp6", timestamp6)
                         .appendQueryParameter("location", location)
                         .appendQueryParameter("city", city);
+
+
+                Log.e("TAG", "Image 1111 " + encodedImage1);
+                Log.e("TAG", "TimeStamp 1111 " + encodedImage1);
 
 
                 String query = builder.build().getEncodedQuery().toString();

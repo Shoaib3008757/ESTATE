@@ -24,6 +24,7 @@ public class SubmitThirldPage extends Fragment {
 
     public static EditText m_ed_location, m_ed_city, m_ed_phoneNumber, m_ed_Name, m_ed_email;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

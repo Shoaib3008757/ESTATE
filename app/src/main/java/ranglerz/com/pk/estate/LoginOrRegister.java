@@ -56,9 +56,10 @@ public class LoginOrRegister extends AppCompatActivity {
     TextView tv_already_have_account, tv_forget_password;
     Button bt_create_account;
 
-    private final String serverUrlLogin = "http://pk.estate/app_webservices/login.php";
-    private final String serverUrlRegistration = "http://pk.estate/app_webservices/registration.php";
+    private final String serverUrlLogin = "http://www.pk.estate/app_webservices/login.php";
+    private final String serverUrlRegistration = "http://www.pk.estate/app_webservices/registration.php";
 
+    private final String serverUrlForgotPassword = "http://www.pk.estate/app_webservices/forgot.php";
 
     int loginRegister = 0;
 
@@ -173,17 +174,7 @@ public class LoginOrRegister extends AppCompatActivity {
                 tv_dont_have_accont.setVisibility(View.GONE);
                 bt_login_now.setVisibility(View.GONE);
 
-              /*  sharedPreferences = getSharedPreferences("userinfo", 0);
-                String userName = sharedPreferences.getString("name", null);
-                String userEmail = sharedPreferences.getString("email", null);
-                String userPhone = sharedPreferences.getString("phone", null);
 
-                if (!userName.equals("null") && !userEmail.equals("null") && userPhone.equals("null")){
-
-                    etRegisterName.setText(userName);
-                    etRegisterEmail.setText(userEmail);
-                    etRegisterPhone.setText(userPhone);
-                }*/
             }
         });
 
@@ -436,6 +427,9 @@ public class LoginOrRegister extends AppCompatActivity {
                 }
             }
 
+
+
+
             if (loginRegister==2){
 
                 if (result!=null) {
@@ -463,6 +457,46 @@ public class LoginOrRegister extends AppCompatActivity {
                         editor.putString("phone", etRegisterPhone.getText().toString());
                         editor.clear();
                         editor.commit();
+
+                        Intent submitProperty = new Intent(LoginOrRegister.this, SubmitProperty.class);
+                        startActivity(submitProperty);
+                        finish();
+
+
+
+
+                    }
+
+                }
+
+            }
+
+
+            if (loginRegister==3){
+
+
+                if (result!=null) {
+
+                    if (jsonResult.equals("true")) {
+
+                        Toast.makeText(LoginOrRegister.this, "Please Check You Email For Password", Toast.LENGTH_LONG).show();
+                        bar.setVisibility(View.GONE);
+
+                        tv_forget_password.setVisibility(View.GONE);
+                        etLoginEmail.setText("");
+                        etLoginPassword.setText("");
+
+                        return;
+
+
+                    }
+
+                    if (jsonResult.equals("You are not a registered user")) {
+
+
+                        Toast.makeText(LoginOrRegister.this, "Emai is not registered", Toast.LENGTH_LONG).show();
+
+                        bar.setVisibility(View.GONE);
 
 
                     }
@@ -554,6 +588,11 @@ public class LoginOrRegister extends AppCompatActivity {
 
             }
 
+            if (loginRegister==3){
+                returnedResult = resultObject.getString("status");
+
+            }
+
         } catch (JSONException e) {
 
             e.printStackTrace();
@@ -622,7 +661,7 @@ public class LoginOrRegister extends AppCompatActivity {
 
                             AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                            //asyncRequestObject.execute(serverUrlRegistration, dialogEmail);
+                            asyncRequestObject.execute(serverUrlForgotPassword, dialogEmail);
                         }
 
 

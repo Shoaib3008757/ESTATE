@@ -15,12 +15,12 @@
                 android:id="@+id/nav_item_home"/>
             <item
                 android:title="Franchise"
-                android:icon="@drawable/home_image_view"
+                android:icon="@drawable/franchise"
                 android:id="@+id/nav_item_franchise"/>
 
             <item
                 android:title="About Us"
-                android:icon="@drawable/home_image_view"
+                android:icon="@drawable/about_us"
                 android:id="@+id/nav_item_about"/>
 
         </menu>
@@ -29,11 +29,11 @@
     <group android:id="@+id/group_settings_id">
 
         <item android:title="Login/Register"
-            android:icon="@drawable/home_image_view"
+            android:icon="@drawable/login_logout"
             android:id="@+id/nav_item_login_registe"/>
 
         <item android:title="Contact Us"
-            android:icon="@drawable/home_image_view"
+            android:icon="@drawable/contact_us"
             android:id="@+id/nav_item_contact_us"/>
 
         <item android:title=""

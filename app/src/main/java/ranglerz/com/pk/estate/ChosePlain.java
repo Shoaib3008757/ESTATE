@@ -60,7 +60,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
 
     int idx = -1;
 
-    private final String serverUrlPayments = "http://pk.estate/app_webservices/payments.php";
+    private final String serverUrlPayments = "http://www.pk.estate/app_webservices/payments.php";
 
 
     static final String TAG = "CHOSE PLAIN";
@@ -1068,7 +1068,7 @@ public class ChosePlain extends AppCompatActivity implements IabBroadcastReceive
                 android.util.Log.d(TAG, "Consumption successful. Provisioning.");
                 //mTank = mTank == TANK_MAX ? TANK_MAX : mTank + 1;
                 //saveData();
-                alert("You have successfully bought Laptop");
+                alert("You have successfully bought Property Plan");
 
 
                 onSuccessfullBoughtPropertyPlane();

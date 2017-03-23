@@ -1,12 +1,14 @@
 package ranglerz.com.pk.estate;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.*;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -91,11 +93,22 @@ public class FindYourDreamProperties extends AppCompatActivity {
         bt_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(FindYourDreamProperties.this, showProperties.class);
+                startActivity(intent);
+
                 boolean spChecker =  validatingSpinner();
                 if (spChecker){
-                    Toast.makeText(FindYourDreamProperties.this, "Sending data....", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FindYourDreamProperties.this, "Please Wait data is loading....", Toast.LENGTH_SHORT).show();
+
+
+
                 }else {
                     //Toast.makeText(this, "Sending data....", Toast.LENGTH_SHORT).show();
+
+                   /* Intent intent = new Intent(FindYourDreamProperties.this, showProperties.class);
+                    startActivity(intent);
+*/
                 }
             }
         });

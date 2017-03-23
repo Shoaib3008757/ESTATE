@@ -67,7 +67,7 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
 
                 // set new title to the MenuItem
                 navUsername.setTitle(name);
-                navUsername.setIcon(R.drawable.home_image_view);
+                navUsername.setIcon(R.drawable.person_image);
                 navLoginRegister.setTitle("Log Out");
 
                 navChosePlane.setTitle("Chose Plane");
@@ -101,7 +101,7 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
 
                 if (menuItem.getItemId() == R.id.nav_item_chose_plain){
 
-                    if (navChosePlane.getTitle().toString().equals("Chose Plane")) {
+                    if (navChosePlane.getTitle().toString().equals("Choose Plan")) {
 
                         Intent mapActivity = new Intent(BaseActvitvityForDrawer.this, ChosePlain.class);
                         startActivity(mapActivity);
@@ -183,10 +183,10 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
 
                 // set new title to the MenuItem
                 navUsername.setTitle(name);
-                navUsername.setIcon(R.drawable.home_image_view);
+                navUsername.setIcon(R.drawable.person_image);
                 navLoginRegister.setTitle("Log Out");
                 navChosePlane.setTitle("Choose Plan");
-                navChosePlane.setIcon(R.drawable.home_image_view);
+                navChosePlane.setIcon(R.drawable.choose_plan);
             }
         }
     }
