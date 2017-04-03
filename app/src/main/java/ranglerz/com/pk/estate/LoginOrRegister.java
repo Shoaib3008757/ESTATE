@@ -60,6 +60,7 @@ public class LoginOrRegister extends AppCompatActivity {
     private final String serverUrlRegistration = "http://www.pk.estate/app_webservices/registration.php";
 
     private final String serverUrlForgotPassword = "http://www.pk.estate/app_webservices/forgot.php";
+    private final String asNormalUser = "normal";
 
     int loginRegister = 0;
 
@@ -213,7 +214,7 @@ public class LoginOrRegister extends AppCompatActivity {
 
                     AsyncDataClass asyncRequestObject = new AsyncDataClass();
 
-                    asyncRequestObject.execute(serverUrlLogin, lEmail, lPass);
+                    asyncRequestObject.execute(serverUrlLogin, lEmail, lPass, asNormalUser);
                 }
 
             }
@@ -318,9 +319,10 @@ public class LoginOrRegister extends AppCompatActivity {
 
                 //for login user
                 if (loginRegister==1) {
-                    nameValuePairs.add(new BasicNameValuePair("email", params[1]));
 
+                    nameValuePairs.add(new BasicNameValuePair("email", params[1]));
                     nameValuePairs.add(new BasicNameValuePair("password", params[2]));
+                    nameValuePairs.add(new BasicNameValuePair("user_type", params[3]));
 
                 }
                 //for registring user
@@ -420,6 +422,7 @@ public class LoginOrRegister extends AppCompatActivity {
                         bar.setVisibility(View.GONE);
 
                         Intent submitProperty = new Intent(LoginOrRegister.this, SubmitProperty.class);
+                        submitProperty.putExtra("from", "normal");
                         startActivity(submitProperty);
                         finish();
 
@@ -459,6 +462,7 @@ public class LoginOrRegister extends AppCompatActivity {
                         editor.commit();
 
                         Intent submitProperty = new Intent(LoginOrRegister.this, SubmitProperty.class);
+                        submitProperty.putExtra("from", "normal");
                         startActivity(submitProperty);
                         finish();
 

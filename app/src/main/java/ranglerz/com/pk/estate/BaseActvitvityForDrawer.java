@@ -22,6 +22,7 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
     MenuItem navLoginRegister;
     MenuItem navUsername;
     MenuItem navChosePlane;
+    MenuItem navFranchiser;
 
 
     View view;
@@ -50,6 +51,7 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
         navUsername = menu.findItem(R.id.nav_item_name);
         navLoginRegister = menu.findItem(R.id.nav_item_login_registe);
         navChosePlane = menu.findItem(R.id.nav_item_chose_plain);
+        navFranchiser = menu.findItem(R.id.nav_item_franchise);
 
 
 
@@ -57,10 +59,27 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
+        SharedPreferences sharedPreferences1 = getSharedPreferences("franchiser", 0);
         Log.e("TAG", "SharePreference " + sharedPreferences);
+
         if (sharedPreferences!=null){
 
             String name = sharedPreferences.getString("name", null);
+
+            if (name!=null) {
+                Log.e("TAG", "SharePreference 11 " + name);
+
+                // set new title to the MenuItem
+                navUsername.setTitle(name);
+                navUsername.setIcon(R.drawable.person_image);
+                navLoginRegister.setTitle("Log Out");
+
+                navChosePlane.setTitle("Chose Plane");
+            }
+
+        }
+        if (sharedPreferences1!=null){
+            String name = sharedPreferences1.getString("name", null);
 
             if (name!=null) {
                 Log.e("TAG", "SharePreference 11 " + name);
@@ -99,9 +118,24 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
                     startActivity(aboutUs);
                 }
 
+
+
+                if (menuItem.getItemId() == R.id.nav_item_franchise){
+                    if (navFranchiser.getTitle().toString().equals("Franchise")) {
+
+                        if (navLoginRegister.getTitle().equals("Log Out")){
+
+                        }else {
+
+                            Intent mapActivity = new Intent(BaseActvitvityForDrawer.this, LoginAsFranchiser.class);
+                            startActivity(mapActivity);
+                        }
+                    }
+                }
+
                 if (menuItem.getItemId() == R.id.nav_item_chose_plain){
 
-                    if (navChosePlane.getTitle().toString().equals("Choose Plan")) {
+                    if (navChosePlane.getTitle().toString().equals("Chose Plane")) {
 
                         Intent mapActivity = new Intent(BaseActvitvityForDrawer.this, ChosePlain.class);
                         startActivity(mapActivity);
@@ -127,9 +161,13 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
 
                         //do logout Function here
                         final SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
+                        final SharedPreferences sharedPreferences1 = getSharedPreferences("franchiser", 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
                         editor.clear();
                         editor.commit();
+                        editor1.clear();
+                        editor1.commit();
                         finish();
                         Intent mapActivity = new Intent(BaseActvitvityForDrawer.this, Home.class);
                         startActivity(mapActivity);
@@ -172,8 +210,11 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
+        SharedPreferences sharedPreferences1 = getSharedPreferences("franchiser", 0);
         Log.e("TAG", "SharePreference " + sharedPreferences);
+
         if (sharedPreferences!=null){
 
             String name = sharedPreferences.getString("name", null);
@@ -185,9 +226,25 @@ public class BaseActvitvityForDrawer extends AppCompatActivity {
                 navUsername.setTitle(name);
                 navUsername.setIcon(R.drawable.person_image);
                 navLoginRegister.setTitle("Log Out");
-                navChosePlane.setTitle("Choose Plan");
                 navChosePlane.setIcon(R.drawable.choose_plan);
+                navChosePlane.setTitle("Chose Plane");
             }
+
+        }
+        if (sharedPreferences1!=null){
+            String name = sharedPreferences1.getString("name", null);
+
+            if (name!=null) {
+                Log.e("TAG", "SharePreference 11 " + name);
+
+                // set new title to the MenuItem
+                navUsername.setTitle(name);
+                navUsername.setIcon(R.drawable.person_image);
+                navLoginRegister.setTitle("Log Out");
+                navChosePlane.setIcon(R.drawable.choose_plan);
+                navChosePlane.setTitle("Chose Plane");
+            }
+
         }
     }
 

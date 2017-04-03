@@ -99,12 +99,15 @@ public class SubmitProperty extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 000000;
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 000001;
 
+    String normalOrFranchiser = "";
+
 
     public static final String SERVERURL = "http://www.pk.estate/app_webservices/add_property.php";
 
 
 
     SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +125,21 @@ public class SubmitProperty extends AppCompatActivity {
 
         LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflator.inflate(R.layout.custom_action, null);
+
+
+
+        Intent intent = getIntent();
+        Log.e("TAG", "TES TEST " + intent);
+        if (intent.getExtras()== null){
+
+        }else {
+            final String userAs = intent.getExtras().getString("from", null);
+            if (userAs!=null) {
+                normalOrFranchiser = userAs;
+            }
+        }
+
+
 
         iv_right_arrow = (ImageView)v.findViewById(R.id.iv_right_arrow);
         iv_left_arrow = (ImageView)v.findViewById(R.id.iv_left_arrow);
@@ -197,13 +215,47 @@ public class SubmitProperty extends AppCompatActivity {
                     iv_right_arrow.setVisibility(View.GONE);
 
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("user", 0);
-                    Log.e("TAG", "SharePreference " + sharedPreferences);
-                    if (sharedPreferences!=null){
+                    sharedPreferences = getSharedPreferences("user", 0);
+                    sharedPreferences1 = getSharedPreferences("franchiser", 0);
+
+
+
+                    if (normalOrFranchiser.equals("normal")) {
+
+                        sharedPreferences = getSharedPreferences("user", 0);
+                    }
+                    if (normalOrFranchiser.equals("franchiser")){
+                        sharedPreferences =  getSharedPreferences("franchiser", 0);
+                    }
+                        Log.e("TAG", "SharePreference " + sharedPreferences);
+                    if (sharedPreferences!=null) {
+
+
 
                         String mName = sharedPreferences.getString("name", null);
                         String mEmail = sharedPreferences.getString("email", null);
                         String mPphone = sharedPreferences.getString("phone", null);
+
+                        if (mName!=null) {
+                            Log.e("TAG", "SharePreference 11 " + name);
+
+                            // set new title to the MenuItem
+                            thirld.m_ed_Name.setText(mName);
+                            thirld.m_ed_email.setText(mEmail);
+                            thirld.m_ed_phoneNumber.setText(mPphone);
+
+
+
+                        }
+
+                    }
+                    if (sharedPreferences1!=null) {
+
+
+
+                        String mName = sharedPreferences1.getString("name", null);
+                        String mEmail = sharedPreferences1.getString("email", null);
+                        String mPphone = sharedPreferences1.getString("phone", null);
 
                         if (mName!=null) {
                             Log.e("TAG", "SharePreference 11 " + name);
@@ -667,14 +719,6 @@ public class SubmitProperty extends AppCompatActivity {
                 floors = f.ed_floors.getText().toString();
                 description = f.ed_description.getText().toString();
 
-         /*
-                property_structure = f.ed_structureOfProperty.getText().toString();
-                floor_structure = f.ed_flooringStructer.getText().toString();
-                walls_structure = f.ed_wallsStructure.getText().toString();
-                doors_structure = f.ed_doorsStructure.getText().toString();
-                windows_structure = f.ed_windowsStructure.getText().toString();
-                electrical_structure = f.ed_electricalStructure.getText().toString();
-*/
                 Log.e("TAG", "TEST TEST " + timestamp1);
 
 
@@ -998,6 +1042,8 @@ public class SubmitProperty extends AppCompatActivity {
                 bar.setVisibility(View.GONE);
 
                 Toast.makeText(getApplicationContext(),"Data Sent Successfully...",Toast.LENGTH_SHORT).show();
+
+
 
 
                 //adding data into sharePreferences
