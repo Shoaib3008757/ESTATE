@@ -70,7 +70,8 @@
         </service>
 
         <activity android:name=".SinglePropertyImage" />
-        <activity android:name=".LoginAsFranchiser"></activity>
+        <activity android:name=".LoginAsFranchiser" />
+        <activity android:name=".FranchiserRegistration"></activity>
     </application>
 
 </manifest>

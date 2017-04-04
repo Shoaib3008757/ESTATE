@@ -41,12 +41,9 @@ public class SplashScreen extends AppCompatActivity {
                 //loading.setText("Loading.");
             }
             if (timer == 0) {
-                //loading.setText("Loading..");
 
-                /*Intent i = new Intent(SplashScreen.this, SignInSignUpActivity.class);*/
-
-                //Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                Intent i = new Intent(SplashScreen.this, Home.class);
+                //Intent i = new Intent(SplashScreen.this, Home.class);
+                Intent i = new Intent(SplashScreen.this, FranchiserRegistration.class);
 
                 startActivity(i);
                 finish();
